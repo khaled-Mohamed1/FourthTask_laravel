@@ -12,9 +12,11 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TemporaryWorkforceController;
 use App\Http\Controllers\PermanentWorkforceController;
 use App\Http\Controllers\PoultryController;
+use App\Http\Controllers\TourController;
 use App\Http\Controllers\VegetableController;
 use App\Http\Controllers\WaterSourceController;
 use App\Http\Controllers\TreeController;
+use App\Http\Controllers\VisitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,4 +124,29 @@ Route::controller(PoultryController::class)->group(function () {
     Route::post('farmer/lands/add-poultry', 'addPoultry')->name('add.poultry');
     Route::post('farmer/lands/update-poultry', 'updatePoultry')->name('update.poultry');
     Route::post('farmer/lands/delete-poultry', 'deletePoultry')->name('delete.poultry');
+});
+
+
+//////////////////////////////
+
+// taks five
+
+Route::controller(TourController::class)->group(function () {
+    Route::get('tours', 'index')->name('tours');
+    Route::post('tours/add-tour', 'addTour')->name('add.tour');
+    Route::get('tour/show/{id}', 'show')->name('tour.show');
+    Route::post('tours/update-tour', 'updateTour')->name('update.tour');
+    Route::post('tours/delete-tour', 'deleteTour')->name('delete.tour');
+    Route::post('tours/search', 'search')->name('tours.search');
+    Route::get('tours/autocomplete/name', 'fetchname')->name('tour.autocompletename');
+    Route::get('tours/getRegion', 'getRegion')->name('tour.getRegion');
+});
+
+Route::controller(VisitController::class)->group(function () {
+    Route::post('tours/add-visit', 'addVisit')->name('add.visit');
+    Route::post('tours/delete-visit', 'deleteVisit')->name('delete.visit');
+    Route::post('tours/searchvisit', 'search')->name('visit.search');
+    Route::get('tours/autocomplete/fetch', 'fetch')->name('visit.autocomplete');
+    Route::post('tours/getAgricultural', 'getAgricultural')->name('getAgricultural');
+    Route::post('tours/getAnimal', 'getAnimal')->name('getAnimal');
 });

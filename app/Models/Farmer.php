@@ -54,4 +54,11 @@ class Farmer extends Model
     {
         return $this->hasMany(App::class);
     }
+
+    public function visits()
+    {
+        return $this->hasMany(Visit::class);
+    }
+
+
 }
